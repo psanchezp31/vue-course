@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vue.js Intro</title>
+  </head>
+  <body>
+    <div id="myApp">
+      <h1>Batman quotes</h1>
+      <small>{{newQuote}}</small>
+      <input type="text" v-model="newQuote"
+      v-on:keypress.enter="addQuote" />
+
+      <hr />
+
+      <ul>
+        <li v-for="({quote,author}, index) in quotes">
+          <!--desestructurando el obj quotes y obteniendo el indice-->
+          <span>{{index+1}}. {{quote}}</span>
+          <!-- si existe un author, es decir, si no es undefined o vacio, entonces muestrelo solamente cuando haya, usarlo cuando es poco probable que cambie el elemento -->
+          <!-- <blockquote v-if="author">-{{author}}</blockquote> -->
+
+          <!-- v-show le coloca una etiqueta style= display:none, oculta los elementos en el dom, pero siempre se renderiza, usarlo cuando se debe ocultar muy seguido el elemento -->
+          <blockquote v-show="author">-{{author}}</blockquote>
+        </li>
+      </ul>
+    </div>
+
+    <script src="https://unpkg.com/vue@next"></script>
+    <script src="./app.js"></script>
+  </body>
+</html>
