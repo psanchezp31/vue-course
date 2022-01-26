@@ -5,7 +5,7 @@
 
   <button @click="increment">+1</button>
   <button @click="incrementBy">+5</button>
-  <button @click="incrementRandomInt">Random</button>
+  <button @click="incrementRandomInt" :disabled="isLoading">Random</button>
 
   <h1>mapState</h1>
   <h2>mapState: {{ count }}</h2>
@@ -13,7 +13,7 @@
 </template>
 
 <script>
-import { mapState } from "vuex";
+import { mapState, mapActions } from "vuex";
 
 export default {
   computed: {
@@ -22,7 +22,7 @@ export default {
     },
 
     //DOS FORMAS DE LLAMAR UNA PROP DEL STATE
-    ...mapState(["count", "lastMutation"]), //destructuracion para llamar la prop que quiero no mas
+    ...mapState(["count", "lastMutation", "isLoading"]), //destructuracion para llamar la prop que quiero no mas
 
     // ...mapState({
     //     count: state => state.count
@@ -36,9 +36,13 @@ export default {
     incrementBy() {
       this.$store.commit("incrementBy", 5); //se le pasa la mutación y el otro argumento
     },
-    incrementRandomInt(){
-        this.$store.dispatch('incrementRandomInt')
-    }
+    // incrementRandomInt(){
+    //     this.$store.dispatch('incrementRandomInt')
+    // }
+    ...mapActions(["incrementRandomInt"]), //Esto es lo mismo que lo anterior, hace el dispatch
+    // ...mapActions({
+    //     randomInt: 'incrementRandomInt'
+    // }) Esta forma es para diferenciar el nombre de otro método, para que no se confundan
   },
 };
 </script>
