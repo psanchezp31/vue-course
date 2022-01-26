@@ -32,6 +32,7 @@ describe("PokemonOptions Component", () => {
     const [li1, li2, li3, li4] = wrapper.findAll("li");
 
     li1.trigger("click");
+    console.log(wrapper)
     console.log(wrapper.emitted("selection"));
 
     expect(wrapper.emitted("selection").length).toBe(1); //para mirar que se emitió solo una vez

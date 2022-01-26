@@ -23,45 +23,45 @@ export default {
     }
   },
   beforeCreate() {
-    console.log("beforeCreated");
+    // console.log("beforeCreated");
   },
   created() {
-    console.log("created");
+    // console.log("created");
     //acá se pueden hacer peticiones HTTP Para que se renderice en el componente
   },
   beforeMount() {
-    console.log("beforeMount");
+    // console.log("beforeMount");
   },
   mounted() {
-    console.log("mounted");
+    // console.log("mounted");
   },
   beforeUpdate() {
-    console.log("beforeUpdate");
+    // console.log("beforeUpdate");
   },
   updated() {
-    console.log("updated");
+    // console.log("updated");
   },
   activated() {
-    console.log("activated");
+    // console.log("activated");
   },
   deactivated() {
-    console.log("deactivated");
+    // console.log("deactivated");
   },
   beforeUnmount() {
-    console.log("beforeUnmount");
+    // console.log("beforeUnmount");
   },
   unmounted() {
-    console.log("unmounted");
+    // console.log("unmounted");
     //aca se pueden limpiar cosas del componente 
   },
   errorCaptured() {
-    console.log("errorCaptured");
+    // console.log("errorCaptured");
   },
   renderTracked() {
-    console.log("renderTracked");
+    // console.log("renderTracked");
   },
   renderTriggered() {
-    console.log("renderTriggered");
+    // console.log("renderTriggered");
   },
 };
 </script>

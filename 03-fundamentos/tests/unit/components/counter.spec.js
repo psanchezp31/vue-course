@@ -9,10 +9,10 @@ describe("Counter Component", () => {
     wrapper = shallowMount(Counter);
   });
 
-  //   test("Debe hacer match con el snapshot", () => {
+    test("Debe hacer match con el snapshot", () => {
 
-  //     expect(wrapper.html()).toMatchSnapshot();
-  //   });
+      expect(wrapper.html()).toMatchSnapshot();
+    });
 
   test('H2 debe tener el valor por defecto "Counter', () => {
     expect(wrapper.find("h2").exists()).toBeTruthy();
@@ -52,6 +52,8 @@ describe("Counter Component", () => {
     console.log(wrapper.props()); //accede a las props del counter, es decir start, y title
 
     const { start } = wrapper.props();
+
+    expect(start).toBeInstanceOf(Number)
 
     const value = wrapper.find('[data-testid="counter"]').text();
 
