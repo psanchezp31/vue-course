@@ -1,6 +1,6 @@
 <template>
   <h1>Counter-Vuex</h1>
-  <h2>Direct access:{{ $store.state.count }}</h2>
+  <h2>Direct access:{{ $store.state.counter.count }}</h2>
   <h2>Computed:{{ countComputed }}</h2>
 
   <button @click="increment">+1</button>
@@ -10,6 +10,7 @@
   <h1>mapState</h1>
   <h2>mapState: {{ count }}</h2>
   <h2>lastMutation: {{ lastMutation }}</h2>
+  <h2>Direct getter: {{$store.getters["counter/squareCount"]}}</h2>
 </template>
 
 <script>
@@ -18,11 +19,11 @@ import { mapState, mapActions } from "vuex";
 export default {
   computed: {
     countComputed() {
-      return this.$store.state.count; //acceder al store mediante prop computada
+      return this.$store.state.counter.count; //acceder al store mediante prop computada
     },
 
     //DOS FORMAS DE LLAMAR UNA PROP DEL STATE
-    ...mapState(["count", "lastMutation", "isLoading"]), //destructuracion para llamar la prop que quiero no mas
+    ...mapState('counter',["count", "lastMutation", "isLoading"]), //destructuracion para llamar la prop que quiero no mas
 
     // ...mapState({
     //     count: state => state.count
@@ -30,16 +31,16 @@ export default {
   },
   methods: {
     increment() {
-      this.$store.commit("increment"); //para hacer una mutación
+      this.$store.commit("counter/increment"); //para hacer una mutación
       //del state, se hace un commit, se le pasa el mutation registrado 'increment'
     },
     incrementBy() {
-      this.$store.commit("incrementBy", 5); //se le pasa la mutación y el otro argumento
+      this.$store.commit("counter/incrementBy", 5); //se le pasa la mutación y el otro argumento
     },
     // incrementRandomInt(){
     //     this.$store.dispatch('incrementRandomInt')
     // }
-    ...mapActions(["incrementRandomInt"]), //Esto es lo mismo que lo anterior, hace el dispatch
+    ...mapActions('counter', ["incrementRandomInt"]), //Esto es lo mismo que lo anterior, hace el dispatch
     // ...mapActions({
     //     randomInt: 'incrementRandomInt'
     // }) Esta forma es para diferenciar el nombre de otro método, para que no se confundan
